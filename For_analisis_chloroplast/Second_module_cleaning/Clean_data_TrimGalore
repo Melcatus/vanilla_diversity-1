@@ -1,0 +1,15 @@
+#!bin/bash
+
+##Make a directory for clean data
+cd ../Process/data
+mkdir clean_data
+
+##To clean demultiplexed data with TrimGalore_0.6.6 in general aspects, as illumina adapter, cut first and end bases, length, and quality
+
+TrimGalore-0.6.6/trim_galore --illumina -length 84 --clip_R1 5 --stringency 5 -q 34 --three_prime_clip_R1 2 --fastqc ~/Escritorio/Process/data/demultiplex/*.fq.gz -o ~/Escritorio/Process/data/data_clean
+
+##To clean overrepresented sequences after a check in FastQC on each trimmed sample (just for single end)
+TrimGalore-0.6.6/trim_galore -a "<sequence1> -a <sequence2> -a <sequence3>... -a <sequence_n>" --fastqc ../Process/data/data_clean/name_of_file_trimmed.fq.gz -o ../Process/data/data_cleanover
+
+##If is it necessary, run a second trimming to new overrepresented sequences recognized in second and third trimming
+TrimGalore-0.6.6/trim_galore -a "<sequence1> -a <sequence2> -a <sequence3>... -a <sequence_n>" --fastqc ../Process/data/data_cleanover/name_of_file_trimmed_trimmed.fq.gz -o ../Process/data/cleanover_secondrun

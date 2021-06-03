@@ -1,0 +1,7 @@
+#!bin/bash
+##Create a output directory for demultiplex data
+cd ../Process/data
+mkdir demultiplex
+
+##To demultiplex data
+stacks process_radtags -p ../Process/data/raw -o ../Process/data/demultiplex -b ../Process/data/GBS-PstI-1-96_barcodes.txt -e pstI --renz_1 pstI -r -c -q --inline_null -s 20 --filter_illumina --adapter_1  AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT

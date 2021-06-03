@@ -1,0 +1,33 @@
+###To check the quality of alignment and mapping sequences
+
+###In order not to create wrong directories, we will first create the directories of the quality reports process
+##A loop for quality report in all archives
+
+#Make a directory for quality reports
+mkdir ../Process/data/qreports
+
+#Make a directory for each archive to index quality report process
+for dirq in `ls ../Process/data/vanillagroup | grep -oE "\w*" | uniq`; do
+mkdir ../Process/data/qreports/${dirq}
+done
+
+#For a quality report with qualimap sample by sample
+qualimap_v2.2.1/qualimap bamqc -bam ../Process/data/vanillagroup/"***_trimmedsortedadd.bam" -nw 400 -hm 3
+
+
+#Make an index on samtools
+samtools faidx ../Process/data/MN200375/"MN200375.fa" --output ../Process/data/MN200375.fa
+
+#Index sample by sample
+samtools index ../Process/data/vanillagroup/"***_trimmedsortedadd.bam"
+
+#A loop to index all samples
+for indexb in `ls ../Process/data/vanillagroup | grep -oE "\w*" | uniq`; do
+samtools index ../Process/data/vanillagroup/${indexb}.bam
+done
+
+#Loop for all samples
+for qr in `ls ../Process/data/vanillagroup | grep -oE "\w*" | uniq`; do
+qualimap_v2.2.1/qualimap bamqc -bam ../Process/data/vanillagroup/${qr}.bam -nw 400 -hm 3 -outdir ../Process/data/qreports
+
+
