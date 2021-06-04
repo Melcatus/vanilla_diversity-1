@@ -27,8 +27,8 @@ PicardCommandLine SortSam INPUT=../Process/data/wgenbam/"name_archieve.bam" OUTP
 
 
 #A loop to convert sort all files in one comand. In the final test, verify the weight of the archives, to check the proportionality of the weight in each file
-for wgensort in `ls ~/Escritorio/Process/data/wgenbam | grep -oE "\w*" | uniq`; do 
-PicardCommandLine SortSam INPUT=~../Process/data/wgenbam/${wgensort}.bam OUTPUT=~..Process/data/wgsort/${wgensort}st.bam SORT_ORDER=coordinate;
+for wgensort in `ls ../Process/data/wgenbam | grep -oE "\w*" | uniq`; do 
+PicardCommandLine SortSam INPUT=../Process/data/wgenbam/${wgensort}.bam OUTPUT=../Process/data/wgsort/${wgensort}st.bam SORT_ORDER=coordinate;
 done
 
 

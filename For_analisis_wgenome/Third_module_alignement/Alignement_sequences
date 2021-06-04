@@ -11,7 +11,8 @@ mkdir ../Process/data/wgen
 
 ##Use the cat command to concatenate the sequences of the whole genome
 ##Before this step, rename the archives to better use and move the files to "wgen" directory
-cat ~/Escritorio/Process/data/wgen/"c1.fa" "c2.fa" "c3.fa" "c4.fa" "c5.fa" "c6.fa" "c7.fa" "c8.fa" "c9.fa" "c10.fa" "c11.fa" "c12.fa" "c13.fa" "c14.fa" > wrefgen.fa
+###Important note. Erase colon in all fasta files of reference genome!! This is important because the populations module on Stacks don't recognize the format with colon on header
+cat ../Process/data/wgen/"c1.fa" "c2.fa" "c3.fa" "c4.fa" "c5.fa" "c6.fa" "c7.fa" "c8.fa" "c9.fa" "c10.fa" "c11.fa" "c12.fa" "c13.fa" "c14.fa" > wrefgen.fa
 
 ##Create the index with the genome reference (in format fasta)
 ##Opcional use flag -a is/bwtsw to inditcate the length in sequences (short or long respectively)
