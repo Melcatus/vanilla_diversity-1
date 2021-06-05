@@ -1,4 +1,9 @@
-########To sort sequences on Picard-tools
+#####Prerequisites, install Picard-tools, available on https://broadinstitute.github.io/picard/
+##Or use the next command line in console
+# sudo apt update
+# sudo apt install picard-tools
+
+##To sort sequences on Picard-tools
 
 #Make a new directory for bam files
 mkdir ../Process/data/vanillabam

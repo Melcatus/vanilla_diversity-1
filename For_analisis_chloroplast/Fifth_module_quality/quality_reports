@@ -1,3 +1,8 @@
+####Prerequisites for this module, software samtools, available on http://www.htslib.org/
+##Or use the next command line
+# sudo apt update
+# sudo apt install samtools
+
 ###To check the quality of alignment and mapping sequences
 
 ###In order not to create wrong directories, we will first create the directories of the quality reports process
