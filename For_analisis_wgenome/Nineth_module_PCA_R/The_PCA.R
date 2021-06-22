@@ -3,7 +3,7 @@ library(tidyverse)
 
 thefn<- "first.recode.vcf"
 snpgdsVCF2GDS(thefn, "thefn.gds", method="biallelic.only")
-popfile<- c("popmap_orig.tsv")
+popfile<- c("popmap_orig.txt")
 
 
 genef<-snpgdsOpen('thefn.gds')
@@ -26,7 +26,12 @@ datfra<-data.frame(name = AnPCA$sample.id,
 
 ndfra<-merge(datfra, infopop)
 
-library(ggplot2)
-ggplot(data=ndfra,aes(Ei1,Ei2)) + geom_jitter(aes(color=population), width=0.01,height=0.01) + ylab("PC 2") + xlab("PC 1")
+##First command line option for a PCA with ggplot package
+ggplot(data=ndfra,aes(Ei1,Ei2)) + geom_jitter(aes(color=population),
+                                            width=0.01,height=0.01) + ylab("PC 2") + xlab("PC 1")
 
-plot(datfra$Ei2, datfra$Ei1, xlab="eigenvector 2", ylab="eigenvector 1")
+##Second command line option for a PCA
+plot(ndfra$Ei2, ndfra$Ei1, col=as.integer(ndfra$pop), xlab="eigenvector 2", ylab="eigenvector 1")
+legend(x=0.6, y=0.7, legend=levels(ndfra$pop), col=c(1:2), pch = 6)
+
+
