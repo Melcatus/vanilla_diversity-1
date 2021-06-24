@@ -6,7 +6,7 @@
 ##To create a directory for the sequences of the genome reference of Vanilla (Whole genome) and index
 mkdir ../Process/data/wgen
 
-##Download th whole genome of vanilla in next link -> https://www.ncbi.nlm.nih.gov/assembly/GCA_016413895.1
+##Download the whole genome of vanilla in next link -> https://www.ncbi.nlm.nih.gov/assembly/GCA_016413895.1
 ##Whole genome is divide on chromosomes, download in fasta format all the visible range.
 
 ##Use the cat command to concatenate the sequences of the whole genome
@@ -18,10 +18,6 @@ cat ../Process/data/wgen/"c1.fa" "c2.fa" "c3.fa" "c4.fa" "c5.fa" "c6.fa" "c7.fa"
 ##Opcional use flag -a is/bwtsw to inditcate the length in sequences (short or long respectively)
 bwa index ../Process/data/wgen/wrefgen.fa ../Process/data/wgen/wrefgen
 
-##Move archives .fq.gz to a new directory
-mkdir ../Process/data/data_trimmed
-cd ../Process/data/data_clean
-mv *fq.gz ../Process/data/data_trimmed
 
 ##Create a directory for the alignment sequences
 mkdir ../Process/data/wgen_aln
