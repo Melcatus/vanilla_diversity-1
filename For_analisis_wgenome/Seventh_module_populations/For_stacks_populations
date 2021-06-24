@@ -2,7 +2,7 @@
 ##Prerequisites, Stacks populations module
 ##Make a module for output
 mkdir ../Process/data/popf
-mkdir ../Process/data/first_an
+mkdir ../Process/data/popf/first_an
 
 ##To do analysis on the last output of gstacks (sixth module)
 ##The outputs on this analysis was determined for software 'STRUCTURE', 'GENEPOP', 'Phylip' and 'VCFtools'
