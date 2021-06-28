@@ -5,10 +5,13 @@ sudo apt install vcftools
 ##Do a directory for the analysis output
 mkdir ../Process/data/filtered
 ##Do a second directory for this module analysis
-mkdir ../Process/data/filtered/filtered_first
+mkdir ../Process/data/filtered/filtered_third
+
+##Do a new archive with filters applied
+vcftools --vcf ../Process/data/popf/third_an/"populations.snps.vcf" --out ../Process/data/filtered/filtered_third/third --maf 0.1 --min-meanDP 10 --max-meanDP 1000 --max-missing 0.3 --remove-filtered-all --recode
 
 ##For the analysis with VCFtools
-vcftools --vcf ../Process/data/popf/first_an/"populations.snps.vcf" --out ../Process/data/filtered/filtered_first/first --maf 0.1 --min-meanDP 10 --max-meanDP 1000 --max-missing 0.3 --remove-filtered-all [-some_analysis*]
+vcftools --vcf ../Process/data/popf/third_an/"populations.snps.vcf" --out ../Process/data/filtered/filtered_third/third --maf 0.1 --min-meanDP 10 --max-meanDP 1000 --max-missing 0.3 --remove-filtered-all [-some_analysis*]
 #*This module consists in five parts, because VCFtools do just one analysis for each command line, so its
 #necessary replace the last flag with the requeried analysis
 ##Analyzes executed
@@ -19,5 +22,4 @@ vcftools --vcf ../Process/data/popf/first_an/"populations.snps.vcf" --out ../Pro
 *.... --site-pi
 *.... --SNPdensity 1000000
 
-##Do a new archive with filters applied
-vcftools --vcf ../Process/data/popf/first_an/"populations.snps.vcf" --out ../Process/data/filtered/filtered_first/first --maf 0.1 --min-meanDP 10 --max-meanDP 1000 --max-missing 0.3 --remove-filtered-all --recode
+
