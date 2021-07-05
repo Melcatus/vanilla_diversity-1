@@ -10,7 +10,7 @@ The present repository contains a way to process and analyze data GBS, in order 
 
 #### General work flow diagram 
 
-![](/home/adrian/Escritorio/Process/mygit/vanilla_diversity/workflow.jpg)
+![workflow](/home/adrian/Escritorio/Process/mygit/vanilla_diversity/workflow.jpg)
 
 [^Fig. 1. ]: Workflow for different analysis
 
