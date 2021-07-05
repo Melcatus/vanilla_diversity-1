@@ -1,4 +1,7 @@
 # Analysis of the diversity of *Vanilla sp* (Orchidaceae)
+
+
+
 [TOC]
 
 #### Description
@@ -141,9 +144,26 @@ Contains
 
   10_Tenth_module_FPCA.R: Principal Component Analysis SNP catalogue, to identify graphically populations
 
+**data** 
+
+- README_gen.md: Contains the links to the reference genome (chloroplast and whole genome)
+
+**meta** 
+
+- pest_nd.tsv: Population map to the analysis for states (just *V. planifolia*)
+- pest_nd.txt: Population map to the PCA for states but in R (just *V. planifolia*)
+- pmallsp.tsv: Population map to the analysis for all species (without duplicates)
+- pmallsp.txt: Population map to the PCA for all species but in R (without duplicates)
+- pmap_nod.tsv: Population map to the analysis without duplicates (just for *V. planifolia*)
+- pmap_nod.tsv: Population map to the PCA without duplicates but in R (just for *V. planifolia*) 
+- popmap_orig.tsv: Population map to the analysis with duplicates (just *V. planifolia*)
+- popmap_orig.txt: Population map to the PCA with duplicates (just *V. planifolia*)
+
 #### Note
 
 During the process, is necessary empty some directories (manly in analysis with the whole reference genome), generally the directories that are need to be emptied is "pop_origin, wgen, wgen_aln, wgenbam wgrep, wgroups, wgsort" but is better read carefully each script to identify common directories that the process is using and sharing in each analysis.
+
+Futhermore, all analysis take place in one "master directory" called ´Process´, which contains all directories during the analysis.
 
 #### Credits
 
@@ -151,4 +171,4 @@ During the process, is necessary empty some directories (manly in analysis with 
 
 
 
-~Adrián Gutiérrez~ 
+*Adrián Gutiérrez* 
