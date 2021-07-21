@@ -12,7 +12,8 @@ thefn<- "first.recode.vcf"
 snpgdsVCF2GDS(thefn, "thefn.gds", method="biallelic.only")
 popfile<- c("popmap_orig.txt")
 infopop<-read_tsv(popfile)
-sample.id<-read.gdsn(index.gdsn(genef,"sample.id"))
+labelfile<-c("code_dup.txt")
+infolabel<-read_tsv(labelfile)
 
 ##To prun the transformed data and extract the SNP
 genef<-snpgdsOpen('thefn.gds')
@@ -30,22 +31,11 @@ head(round(var.exp, 2))
 #Do the data frame
 datfra<-data.frame(name = AnPCA$sample.id,
                    pop = infopop$pop,
+                   labname = infolabel$code,
                    Ei1 = AnPCA$eigenvect[,1],  
                    Ei2 = AnPCA$eigenvect[,2],    
                    stringsAsFactors = FALSE)
 
-##First command line option for a PCA with ggplot package
-ggplot(data=datfra,aes(Ei1,Ei2)) + geom_jitter(aes(color=pop), width=0.01,height=0.01) + ylab("PC 2") + xlab("PC 1")
-
-lbls <- paste("PC", 1:4, "\n", format(var.exp[1:4], digits=2), "%", sep="")
-pairs(AnPCA$eigenvect[,1:4], col=datfra$pop, labels=lbls)
-
-chr <- read.gdsn(index.gdsn(genef, "snp.chromosome"))
-corr <- snpgdsPCACorr(AnPCA, genef, eig.which=1:4)
-savepar <- par(mfrow=c(3,1), mai=c(0.3, 0.55, 0.1, 0.25))
-for (i in 1:3)
-{
-  plot(abs(corr$snpcorr[i,]), ylim=c(0,1), xlab="", ylab=paste("PC", i),
-       col=chr, pch="+")
-}
-
+##Command line for a PCA with ggplot package
+png(filename="pca_withdup.png", width=1920, height=1080)
+ggplot(data=datfra,aes(Ei1,Ei2)) + geom_jitter(aes(color=pop), width=0.01,height=0.01) + ylab("PC 2") + xlab("PC 1") + geom_text(aes(label=labname, hjust=0, vjust=0, color=pop))
