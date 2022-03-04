@@ -6,8 +6,8 @@ mkdir ../Process/data/popstr; mkdir ../Process/data/popstr/popscn
 
 ##To transform our vcf file into bed file (.bed). Software "plink2" installed on linux environment.
 
-plink2 --vcf ../Process/data/filtered/filtered_second/second.recode.vcf --maf 0.1 --make-bed --allow-extra-chr --out ../Process/data/popstr/popscn/scnd
-plink2 --vcf ../Process/data/filtered/filtered_second/second.recode.vcf --maf 0.1 --recode vcf --allow-extra-chr --out ../Process/data/popstr/popscn/scnd2
+plink2 --vcf ../Process/data/filtered/filtered_second/second.recode.vcf --maf 0.1 --recode vcf --allow-extra-chr --out ../Process/data/popstr/popscn/scnd
+plink2 --vcf ../Process/data/filtered/filtered_second/second.recode.vcf --maf 0.1 --make-bed --allow-extra-chr --out ../Process/data/popstr/popscn/scnd2
 
 ##To test the most sensibility "K" for the admixture analysis
 for adxsc in 1 2 3 4 5 6 7 8 9 10; do ../dist/admixture_linux-1.3.0/admixture32  --cv=10 ../Process/data/popstr/popscn/scnd2.bed  $adxsc | tee log${adxsc}.out; done
