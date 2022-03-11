@@ -34,9 +34,9 @@ K8$pop <- popind$datpop.pop
 K8$reg <- popind$datreg.pop
 K8f <- melt(K8)
 
-regplot <- ggplot(K8f, aes(factor(ind), value, fill = factor(variable)))+geom_bar(stat="identity")+facet_grid(~fct_inorder(reg), scales = "free", switch = "x", space = "free")+theme_minimal()+theme(axis.text.x=element_text(size=5,angle=45,hjust=1),axis.text.y=element_text(size=11),legend.position="none",axis.title.x=element_blank(),axis.title.y=element_text(size=15),strip.text.x=element_text(size=14))
+regplot <- ggplot(K8f, aes(factor(ind), value, fill = factor(variable)))+geom_bar(stat="identity")+facet_grid(~fct_inorder(reg), scales = "free", switch = "x", space = "free")+theme_minimal()+theme(axis.text.x=element_text(size=10,angle=45,hjust=1),axis.text.y=element_text(size=11),legend.position="none",axis.title.x=element_blank(),axis.title.y=element_text(size=15),strip.text.x=element_text(size=14))
 
-popplot <- ggplot(K8f, aes(factor(ind), value, fill = factor(variable)))+geom_bar(stat="identity")+facet_grid(~fct_inorder(pop), scales = "free", switch = "x", space = "free")+theme_minimal()+theme(axis.text.x=element_text(size=5,angle=45,hjust=1),axis.text.y=element_text(size=11),legend.position="none",axis.title.x=element_blank(),axis.title.y=element_text(size=15),strip.text.x=element_text(size=14))
+popplot <- ggplot(K8f, aes(factor(ind), value, fill = factor(variable)))+geom_bar(stat="identity")+facet_grid(~fct_inorder(pop), scales = "free", switch = "x", space = "free")+theme_minimal()+theme(axis.text.x=element_text(size=10,angle=45,hjust=1),axis.text.y=element_text(size=11),legend.position="none",axis.title.x=element_blank(),axis.title.y=element_text(size=15),strip.text.x=element_text(size=14))
 
 regplot + popplot + plot_layout(ncol=1)
 
