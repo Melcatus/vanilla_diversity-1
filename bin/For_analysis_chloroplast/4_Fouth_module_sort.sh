@@ -1,43 +1,26 @@
 !#/bin/bash
 
-#####Prerequisites, install Picard-tools, available on https://broadinstitute.github.io/picard/
-##Or use the next command line in console
-# sudo apt update
-# sudo apt install picard-tools
+#####Prerequisites: install Picard-tools and samtools
+## This script is in ./bin and data are ../vanilla/data/map
+## To sort sequences on Picard-tools
 
-##To sort sequences on Picard-tools
 
-#Make a new directory for bam files
-mkdir ../Process/data/vanillabam
-
-###Convert sam files from directory vanilla_aln into bam files, with Picard tools
-
-#To convert sample by sample
-PicardCommandLine SamFormatConverter I=../Process/data/vanilla_aln/"name_archive.sam" O=../Process/data/vanillabam/"name_archive.bam"
-
-#To convert all the samples .sam in one command. In the final test, verify the weight of the archives, to check the proportionality of the weight in each file
-for sambam in `ls ../Process/data/vanilla_aln | grep -oE "\w*" | uniq`;
-do PicardCommandLine SamFormatConverter I=../Process/data/vanilla_aln/${sambam}.sam O=../Process/data/vanillabam/${sambam}.bam
+#### Convert sam  files to bam format
+for R in `ls ../vanilla/data/map | grep -oE "\w*.fq.gz" | uniq`;
+do java -jar -Xmx60000M ../picard.jar SamFormatConverter I=../vanilla/data/map/${R}.sam O=../vanilla/data/map/${R}.bam;
 done
 
-##For sort sequences with SortSam in Picard-Tools
-##Make a new directory for data sorted
-mkdir ../Process/data/vanillabamsorted
+# sorted
+for R in `ls ../vanilla/data/map | grep -oE "\w*.fq.gz" | uniq`;
+do java -jar -Xmx60000M ../picard.jar SortSam I=../vanilla/data/map/${R}.bam O=../vanilla/data/map/${R}sorted.bam SO=coordinate;
+done
 
-#To sort sample by sample
-PicardCommandLine SortSam INPUT=../Process/data/vanillabam/"name_archieve.bam" OUTPUT=../Process/data/vanillabamsorted/name_archieve.bam SORT_ORDER=coordinate
+### Add group
+for R in `ls ../vanilla/data/map | grep -oE "\w*.fq.gz" | uniq`;
+do java -jar -Xmx60000M ../picard.jar AddOrReplaceReadGroups I=../vanilla/data/map/${R}sorted.bam O=../vanilla/data/map/${R}sortedRG.bam ID=sample LB=Paired-end PL=Illumina PU=Unknown SM=sample;
+done
 
-
-#A loop to convert sort all files in one comand. In the final test, verify the weight of the archives, to check the proportionality of the weight in each file
-for bamsort in `ls ../Process/data/vanillabam | grep -oE "\w*" | uniq`; do 
-PicardCommandLine SortSam INPUT=../Process/data/vanillabam/${bamsort}.bam OUTPUT=../Process/data/vanillabamsorted/${bamsort}sorted.bam SORT_ORDER=coordinate;
-> done
-
-##For add a readgroup to archieves bam
-
-#To add readgroup sample by sample
-PicardCommandLine AddOrReplaceReadGroups INPUT=../Process/data/vanillabamsorted/"name_archive.bam" OUTPUT=../Process/data/vanillagroup/name_archive.bam RGID=sample RGLB=single-end RGPL=Illumina RGPU=unknown RGSM=sample
-
-#A loop to add readgroups in one command
-for bamadd in `ls ../Process/data/vanillabamsorted | grep -oE "\w*" | uniq`; do PicardCommandLine AddOrReplaceReadGroups INPUT=../Process/data/vanillabamsorted/${bamadd}.bam OUTPUT=../Process/data/vanillagroup/${bamadd}add.bam RGID=sample RGLB=single-end RGPL=Illumina RGPU=unknown RGSM=sample
-
+# Index samples
+for R in `ls ../vanilla/data/map | grep -oE "\w*.fq.gz" | uniq`;
+do samtools index ../vanilla/data/map/${R}sortedRG.bam;
+done
