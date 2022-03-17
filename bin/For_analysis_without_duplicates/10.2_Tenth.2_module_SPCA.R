@@ -37,5 +37,5 @@ ssdatfra<-data.frame(name = ssAnPCA$sample.id,
                    stringsAsFactors = FALSE)
 
 ##Command line for a PCA with ggplot package
-png(filename="pca_vplanwcs.png", width=1920, height=1080)
-ggplot(data=ssdatfra,aes(Ei1,Ei2)) + geom_jitter(aes(color=pop), width=0.01,height=0.01) + ylab("PC 2") + xlab("PC 1") + geom_text(aes(label=labname, hjust=0, vjust=0, color=pop))
+png(filename="pca3vp.png", width=1080, height=720)
+ggplot(data=ssdatfra,aes(Ei1,Ei2)) + geom_jitter(aes(color=pop), width=0.01,height=0.01, size = 5) + ylab("PC 2") + xlab("PC 1") + geom_text(aes(label=labname, hjust=0, vjust=0, color=pop, size = 18))

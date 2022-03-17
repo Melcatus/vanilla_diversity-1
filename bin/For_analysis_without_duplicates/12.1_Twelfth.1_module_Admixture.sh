@@ -17,7 +17,7 @@ for adxsc in 1 2 3 4 5 6 7 8 9 10; do ../dist/admixture_linux-1.3.0/admixture32 
 ##We need analize the output files ".log" to see the most sensibility "K". So, we will extract the CV values from the log files, and compare the lowest value.
 ##That will the mos sensibility "K" for the analysis
 
-grep -h "CV" ../Process/data/popstr/popscn/log* | sed 's/:/\ \t/' > ../Process/data/popstr/popscn/CV_values
+grep -h "CV" ../Process/data/popstr/popscn/log* | sed 's/:/\ \t/' > ../Process/data/popstr/popscn/CVl_values
 
 ##For the next step, we need copy the files with the samples code, and the population to which each sample belongs
 ##In this case, the files are "code_nodup.txt" and "pmap_nod.txt", and with they we will make a data frame on R.
