@@ -25,4 +25,19 @@ vcftools --vcf ../Process/data/popf/second_an/culti/"populations.snps.vcf" --out
 *.... --site-pi
 *.... --SNPdensity 1000000
 
+##Same analysis, but strict
 
+##Do a new archive with filters applied
+vcftools --vcf ../Process/data/popf/second_an/culti/"populations.snps.vcf" --out ../Process/data/filtered/filtered_second/culti/cultians --maf 0.1 --min-meanDP 10 --max-meanDP 1000 --max-missing 0.8 --remove-filtered-all --recode
+
+##For the analysis with VCFtools
+vcftools --vcf ../Process/data/popf/second_an/culti/"populations.snps.vcf" --out ../Process/data/filtered/filtered_second/culti/cultians --maf 0.1 --min-meanDP 10 --max-meanDP 1000 --max-missing 0.8 --remove-filtered-all [-some_analysis*]
+#*This module consists in five parts, because VCFtools do just one analysis for each command line, so its
+#necessary replace the last flag with the requeried analysis
+##Analyzes executed
+
+*.... --hardy
+*.... --het
+*.... --TajimaD 10000
+*.... --site-pi
+*.... --SNPdensity 1000000
