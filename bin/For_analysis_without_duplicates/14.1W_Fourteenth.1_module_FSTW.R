@@ -35,8 +35,8 @@ datfstWC4 <- pairwise.WCfst(fstat4dat)
 png(filename="fst4vp.png", width=1080, height=720)
 par(mfrow=c(1,2))
 
-corrplot(datfst4,is.corr=FALSE,method="number,color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstNei4")
-corrplot(datfstWC4,is.corr=FALSE,method="number,color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstWC4")
+corrplot(datfst4,is.corr=FALSE,method="color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstNei4")
+corrplot(datfstWC4,is.corr=FALSE,method="color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstWC4")
 dev.off()
 
 ##Same analysis but strict
@@ -78,6 +78,6 @@ datfstWC6 <- pairwise.WCfst(fstat6dat)
 png(filename="fst6vp.png", width=1080, height=720)
 par(mfrow=c(1,2))
 
-corrplot(datfst6,is.corr=FALSE,method="number,color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstNei6")
-corrplot(datfstWC6,is.corr=FALSE,method="number,color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstWC6")
+corrplot(datfst6,is.corr=FALSE,method="color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstNei6")
+corrplot(datfstWC6,is.corr=FALSE,method="color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstWC6")
 dev.off()

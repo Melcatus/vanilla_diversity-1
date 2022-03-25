@@ -27,7 +27,7 @@ pop(fst5dat)<-labest$pop
 fstat5dat<-genind2hierfstat(fst5dat)
 basicss5 <- basic.stats(fst5dat)
 basicssind5 <- summary(fst5dat)
-datfst5 <- pairwise.neifst(fstat6dat)
+datfst5 <- pairwise.neifst(fstat5dat)
 datfstWC5 <- pairwise.WCfst(fstat5dat)
 
 ##Plotting the fst matrix (two methods)
@@ -35,8 +35,8 @@ datfstWC5 <- pairwise.WCfst(fstat5dat)
 png(filename="fst5vp.png", width=1080, height=720)
 par(mfrow=c(1,2))
 
-corrplot(datfst5,is.corr=FALSE,method="number,color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstNei5")
-corrplot(datfstWC6,is.corr=FALSE,method="number,color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstWC5")
+corrplot(datfst5,is.corr=FALSE,method="color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstNei5")
+corrplot(datfstWC5,is.corr=FALSE,method="color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstWC5")
 dev.off()
 
 
@@ -78,6 +78,6 @@ datfstWC7 <- pairwise.WCfst(fstat7dat)
 png(filename="fst7vp.png", width=1080, height=720)
 par(mfrow=c(1,2))
 
-corrplot(datfst7,is.corr=FALSE,method="number,color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstNei7")
-corrplot(datfstWC7,is.corr=FALSE,method="number,color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstWC7")
+corrplot(datfst7,is.corr=FALSE,method="color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstNei7")
+corrplot(datfstWC7,is.corr=FALSE,method="color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstWC7")
 dev.off()

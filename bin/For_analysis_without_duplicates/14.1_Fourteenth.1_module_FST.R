@@ -20,7 +20,7 @@ fst2.vcf <- read.vcfR("secondlack.recode.vcf")
 fst2dat<-vcfR2genind(fst2.vcf)
 
 ##Add the populations and turn it as factors
-labest <- read.table("pest_ndcoded.txt",sep="\t",header=T)
+labest <- read.table("pest_nd.txt",sep="\t",header=T)
 pop(fst2dat)<-labest$pop
 
 ##Getting the fst stats with two methods: Weir and Cockerhan (1984) and Nei (1987)
@@ -35,6 +35,6 @@ datfstWC2 <- pairwise.WCfst(fstat2dat)
 png(filename="fst2vp.png", width=1080, height=720)
 par(mfrow=c(1,2))
 
-corrplot(datfst2,is.corr=FALSE,method="number,color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstNei2")
-corrplot(datfstWC2,is.corr=FALSE,method="number,color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstWC2")
+corrplot(datfst2,is.corr=FALSE,method="color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstNei2")
+corrplot(datfstWC2,is.corr=FALSE,method="color",type="full",col=rev(terrain.colors(100)),diag=FALSE, title = "FstWC2")
 dev.off()
